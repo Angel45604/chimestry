@@ -1,0 +1,23 @@
+{
+  "name": "alquimesry-db",
+  "version": "1.0.0",
+  "description": "Chemical compounds structure representator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Angel45604/alquimestry.git"
+  },
+  "author": "Angel Marcos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Angel45604/alquimestry/issues"
+  },
+  "homepage": "https://github.com/Angel45604/alquimestry#readme",
+  "dependencies": {
+    "debug": "^3.1.0",
+    "mysql2": "^1.4.2"
+  }
+}
