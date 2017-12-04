@@ -14,7 +14,15 @@ module.exports = function setupCompoundModel (config) {
     },
     name: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: true
+    },
+    iupac: {
+      type: Sequelize.TEXT,
+      allowNull: true
+    },
+    smiles: {
+      type: Sequelize.TEXT,
+      allowNull: true
     }
   })
 }

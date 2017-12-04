@@ -3,14 +3,30 @@
 const setupDatabase = require('./lib/db')
 const setupUserModel = require('./models/user')
 const setupCompoundModel = require('./models/compound')
+const defaults = require('defaults')
+
+const setupCompound = require('./lib/compound')
+const setupUser = require('./lib/user')
 
 module.exports = async function (config) {
+  config = defaults(config, {
+    dialect: 'sqlite',
+    pool: {
+      max: 10,
+      min: 0,
+      idle: 10000
+    },
+    query: {
+      raw: true
+    }
+  })
+
   const sequelize = setupDatabase(config)
   const UserModel = setupUserModel(config)
   const CompoundModel = setupCompoundModel(config)
 
-  UserModel.hasMany(CompoundModel)
-  CompoundModel.belongsTo(UserModel)
+  UserModel.belongsToMany(CompoundModel, {through: 'UserCompound'})
+  CompoundModel.belongsToMany(UserModel, {through: 'UserCompound'})
 
   await sequelize.authenticate()
 
@@ -20,8 +36,8 @@ module.exports = async function (config) {
 
   // sequelize.sync()
 
-  const User = {}
-  const Compound = {}
+  const User = setupUser(UserModel)
+  const Compound = setupCompound(CompoundModel)
 
   return {
     User,

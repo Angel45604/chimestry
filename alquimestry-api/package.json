@@ -1,0 +1,37 @@
+{
+  "name": "alquimestry-api",
+  "version": "1.0.0",
+  "description": "Chemical compounds structure representator",
+  "main": "server.js",
+  "scripts": {
+    "test": "set DEBUG=alquimestry:* & ava tests/ --verbose",
+    "start": "set NODE_ENV=production & node server.js",
+    "start-dev": "set DEBUG=alquimestry.* & nodemon server.js",
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Angel45604/chimestry.git"
+  },
+  "author": "Angel Marcos <angel.marcos@live.com.mx>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Angel45604/chimestry/issues"
+  },
+  "homepage": "https://github.com/Angel45604/chimestry#readme",
+  "dependencies": {
+    "alquimestry-db": "file:../alquimestry-db",
+    "asyncify": "^2.1.2",
+    "ava": "^0.24.0",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "debug": "^3.1.0",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0",
+    "proxyquire": "^1.8.0",
+    "sinon": "^4.1.2",
+    "standard": "^10.0.3",
+    "supertest": "^3.0.0",
+    "util": "^0.10.3"
+  }
+}

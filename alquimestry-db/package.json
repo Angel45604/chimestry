@@ -4,8 +4,9 @@
   "description": "Chemical compounds structure representator",
   "main": "index.js",
   "scripts": {
-    "setup": "node setup.js",
-    "lint": "standard"
+    "setup": "set DEBUG=alquimestry:* & node setup.js",
+    "lint": "standard",
+    "test": "set DEBUG=alquiemstry:* & nyc --reporter=lcov ava tests/ --verbose"
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,19 @@
   },
   "homepage": "https://github.com/Angel45604/alquimestry#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
+    "chalk": "^2.3.0",
     "debug": "^3.1.0",
+    "defaults": "^1.0.3",
+    "inquirer": "^3.3.0",
     "mysql2": "^1.4.2",
     "sequelize": "^4.22.5",
     "standard": "^10.0.3"
+  },
+  "devDependencies": {
+    "ava": "^0.23.0",
+    "nyc": "^11.3.0",
+    "sinon": "^4.1.2",
+    "sqlite3": "^3.1.13"
   }
 }
