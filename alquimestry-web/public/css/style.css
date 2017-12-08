@@ -1,0 +1,88 @@
+body{
+}
+
+
+.fondo{
+	background-image: url('../assets/Puerquimica1.png');
+	background-repeat:no-repeat;
+	background-size:contain;
+	background-position:center;
+	opacity: .3;
+	position:fixed;
+	height: 100%;
+	width: auto;
+	margin-left:12%;
+
+}
+
+@media only screen and (max-width:600px){
+	.fondo{
+		width: 100%;
+		height: auto;
+		margin-left: 0;
+		padding-top: 30%;
+		padding-right: 5%;
+	}
+}
+
+.container{
+	z-index: 1;
+}
+
+.collapsible-body{
+	background-color: #fff;
+}
+
+img{
+	width:100%;
+	height: auto;
+}
+
+.logo{
+	max-width: 15%;
+
+}
+
+.collapsible-header{
+	padding-right: 0;
+	margin-right: 0;
+}
+
+.left{
+	width:50%;
+	display: -webkit-flex; /* Safari */
+    -webkit-justify-content: flex-start; /* Safari 6.1+ */
+    display: flex;
+    justify-content: flex-start;
+}
+
+.right{
+	width:50%;
+	display: -webkit-flex; /* Safari */
+    -webkit-justify-content: flex-end; /* Safari 6.1+ */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.open{
+	transform:translateY(-5px);
+	transform:rotate(180deg);
+	animation-name: iconOpen;
+	animation-duration: .3s;
+}
+
+.closed{
+	animation-name: iconClose;
+	animation-duration: .3s;
+}
+
+@keyframes iconOpen{
+	from{transform: translateY(0px); transform: rotate(0deg); }
+	to{transform: translateY(-5px); transform: rotate(180deg); }
+}
+
+@keyframes iconClose{
+	from{transform: translateY(-5px); transform: rotate(180deg); }
+	to{transform: translateY(0px); transform: rotate(0deg); }
+}
+
