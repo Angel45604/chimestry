@@ -15,16 +15,6 @@ body{
 
 }
 
-@media only screen and (max-width:600px){
-	.fondo{
-		width: 100%;
-		height: auto;
-		margin-left: 0;
-		padding-top: 30%;
-		padding-right: 5%;
-	}
-}
-
 .container{
 	z-index: 1;
 }
@@ -86,3 +76,72 @@ img{
 	to{transform: translateY(0px); transform: rotate(0deg); }
 }
 
+
+@keyframes sidenavAnimOpen{
+	from{transform: translateX(300%);}
+	to{transform: translateX(200%);}
+}
+
+@keyframes sidenavAnimClose{
+	from{transform: translateX(200%);}
+	to{transform: translateX(300%);}
+}
+
+.sideNav{
+	padding: 10px;
+	position: absolute;
+	z-index: 9;
+	width: 35%; 
+	height: 100%; 
+	background-color: #fff;
+	overflow: auto;
+	box-shadow: -5px 0px 10px 1px #aaaaaa;
+}
+
+.openS{
+	/*transform: translateX(0%);*/
+	transform: translateX(200%);
+	animation-name: sidenavAnimOpen;
+	animation-duration: .3s;
+}
+
+#logout {
+	display: none;
+}
+
+.closedS{
+	transform: translateX(300%);
+	animation-name: sidenavAnimClose;
+	animation-duration: .3s;
+}
+
+@media only screen and (max-width:600px){
+	.fondo{
+		width: 100%;
+		height: auto;
+		margin-left: 0;
+		padding-top: 30%;
+		padding-right: 5%;
+	}
+	.sideNav {
+		width: 100%;
+	}
+
+	.openS {
+		transform: translateX(0%);
+	}
+
+	.closedS {
+		transform: translateX(100%);
+	}
+
+	@keyframes sidenavAnimOpen{
+	from{transform: translateX(100%);}
+	to{transform: translateX(0%);}
+}
+
+@keyframes sidenavAnimClose{
+	from{transform: translateX(0%);}
+	to{transform: translateX(100%);}
+}
+}

@@ -1,12 +1,12 @@
 {
-  "name": "alquimesry-db",
+  "name": "alquimestry-db",
   "version": "1.0.0",
   "description": "Chemical compounds structure representator",
   "main": "index.js",
   "scripts": {
     "setup": "set DEBUG=alquimestry:* & node setup.js",
     "lint": "standard",
-    "test": "set DEBUG=alquiemstry:* & nyc --reporter=lcov ava tests/ --verbose"
+    "test": "set DEBUG=alquimestry:* & nyc --reporter=lcov ava tests/ --verbose"
   },
   "repository": {
     "type": "git",

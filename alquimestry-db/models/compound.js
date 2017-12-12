@@ -23,6 +23,10 @@ module.exports = function setupCompoundModel (config) {
     smiles: {
       type: Sequelize.TEXT,
       allowNull: true
+    },
+    user: {
+      type: Sequelize.STRING,
+      allowNull: true
     }
   })
 }

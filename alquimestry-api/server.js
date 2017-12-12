@@ -41,7 +41,7 @@ if (!module.parent) {
   process.on('unhandledRejection', handleFatalError)
 
   server.listen(port, () => {
-    console.log(`${chalk.green('[batizdeskhelp-api]')} server listening on port ${port}`)
+    console.log(`${chalk.green('[alquimestry-api]')} server listening on port ${port}`)
   })
 }
 

@@ -7,6 +7,7 @@ const session = require('express-session')
 const morgan = require('morgan')
 const asyncify = require('express-asyncify')
 const debug = require('debug')('alquimestry:api:routes')
+let auth = require('./auth')
 
 const db = require('alquimestry-db')
 
@@ -84,34 +85,46 @@ storage.route('/signup')
         })
     })
 
-storage.route('/login')
+    storage.route('/login')
     .get(sessionChecker, async(req, res, next) => {
-      res.send('<html><head><title>Login</title></head><body>\n<form action=\"http://localhost:3000/storage/login\" method=\"POST\" enctype="application/x-www-form-urlencoded">\n  <label>Login <input type=\"text\" name=\"username\"/></label>\n  <label>Password <input type=\"password\" name=\"password\"/></label>\n  <button type=\"submit\">Login</button>\n</form></body></html>')
+        res.send('<html><head><title>Login</title></head><body>\n<form action=\"http://localhost:3000/storage/login\" method=\"POST\" enctype="application/x-www-form-urlencoded">\n  <label>Login <input type=\"text\" name=\"username\"/></label>\n  <label>Password <input type=\"password\" name=\"password\"/></label>\n  <button type=\"submit\">Login</button>\n</form></body></html>')
     })
     .post(async(req, res, next) => {
-      debug('A request has come to /users')
-      const username = req.body.username
-      const password = req.body.password
-      debug(`username: ${username} password: ${password}`)
-      console.log(`username: ${username} password: ${password}`)
-      try {
-        await User.findByUserName(username).then((user) => {
-          debug(user.password)
-          debug(user._modelOptions.instanceMethods.validPassword(password, user.password))
-          if (user._modelOptions.instanceMethods.validPassword(password, user.password)) {
-            debug('LOGIN SUCCESSFULL')
-            req.session.user = user.dataValues
-            return res.send(user)
-          } else {
-            return res.send('CREDENTIALS INCORRECT')
-          }
-        }).catch(e => {
-          debug('Username unknown')
-          return res.send('Username Unknown')
-        })
-      } catch (e) {
-        return next(e)
-      }
+        debug('A request has come to /users')
+        const username = req.body.username
+        const password = req.body.password
+        let users
+        debug(`username: ${username} password: ${password}`)
+        console.log(`username: ${username} password: ${password} :v`)
+        try {
+              debug(`HY`)
+              await User.findByUserName(username).then((user) => {
+              debug(`hiHI`)
+                debug(user.password)
+                debug(user._modelOptions.instanceMethods.validPassword(password, user.password))
+                if(user._modelOptions.instanceMethods.validPassword(password, user.password)){
+                    debug('LOGIN SUCCESSFULL')
+                    req.session.user = user.dataValues;
+                    debug(user.toJSON())
+                    let token
+                    auth.sign(user.toJSON(), config.auth.secret, (err, token) => {
+                        if(!err) {
+                            debug(`token: ${token}`)
+                            return res.send({user, token})
+                        }
+                        return err
+                    })
+                }else {
+                    return res.send('CREDENTIALS INCORRECT')
+                }
+            }).catch(e => {
+                debug(e)
+                return res.send('Username Unknown')
+            })
+        }catch (e) {
+            return next(e)
+        }
+
     })
 
 storage.get('/dashboard', async(req, res, next) => {

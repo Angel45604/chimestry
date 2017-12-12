@@ -4,8 +4,8 @@
   "description": "Chemical compounds structure representator",
   "main": "server.js",
   "scripts": {
-    "start": "NODE_ENV=production & node server.js",
-    "start-dev": "DEBUG=alquimestry:* & nodemon server.js",
+    "start": "set NODE_ENV=production & node server.js",
+    "start-dev": "set DEBUG=alquimestry:* & nodemon server.js",
     "lint": "standard"
   },
   "repository": {
@@ -25,6 +25,9 @@
   "dependencies": {
     "chalk": "^2.3.0",
     "debug": "^3.1.0",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "express-asyncify": "^1.0.0",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5"
   }
 }

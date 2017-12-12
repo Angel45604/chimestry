@@ -4,7 +4,7 @@ module.exports = function setupCompound (CompoundModel) {
   async function createOrUpdate (compound) {
     const cond = {
       where: {
-        name: compound.name
+        smiles: compound.smiles
       }
     }
 
@@ -43,6 +43,14 @@ module.exports = function setupCompound (CompoundModel) {
       })
   }
 
+  function findByUser(user) {
+    return CompoundModel.findAll({
+      where: {
+        user
+      }
+    })
+  }
+
   function findAll () {
     return CompoundModel.findAll()
   }
@@ -52,6 +60,7 @@ module.exports = function setupCompound (CompoundModel) {
     findByName,
     findByIupac,
     findByName,
+    findByUser,
     findAll
   }
 }

@@ -13,7 +13,26 @@
 	<script src="js/materialize.min.js"></script> 
 	<script src="js/anime.min.js"></script>
 </head>
-<body>
+<body onkeypress="keyPressed(event)" onload="getUserHistory()">
+	<div class="sideNav openS" id="sideNav">
+		<div id="login">
+
+		<div class="input-field col s6">
+          <input placeholder="Usuario" id="user" type="text" class="validate">
+          <label for="user">Usuario</label>
+        </div>
+        		<div class="input-field col s6">
+          <input placeholder="Contraseña" id="password" type="password" class="validate">
+          <label for="first_name">Contraseña</label>
+        </div>
+		<a class="waves-effect waves-light btn" onclick="login()">Iniciar Sesion</a>
+		</div>
+		<a id="logout" class="waves-effect waves-light btn" id="btn" onclick="logout()">Cerrar Sesion</a>
+		<div class="col s12 m2 l2">
+		<ul class="collapsible popout" id="compoundUser" data-collapsible="expandable">
+			  	</ul>
+		</div>
+	</div>
 
 	<div class="container">
 		<img class="fondo" src="assets/Puerquimica1.png" alt="Fondo">
@@ -23,7 +42,7 @@
 		        <label for="compound" data-error="Compuesto inválido">Compuesto</label>
 <br>
 		        <div class="col s12 m6 offset-m5">
-		        	<a class="waves-effect waves-light btn" id="btn" onclick="translateCompound()">Ok</a>
+		        	<a class="waves-effect waves-light btn" id="btn" onclick="newCompound()">Ok</a>
 		        </div>
 	        </div>
     	</div>

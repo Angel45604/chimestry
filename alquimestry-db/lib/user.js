@@ -19,6 +19,10 @@ module.exports = function setupUser (UserModel) {
     return result.toJSON()
   }
 
+  function findAll () {
+    return UserModel.findAll()
+  }
+
   function findById (id) {
     return UserModel.findById(id)
   }
@@ -47,6 +51,7 @@ module.exports = function setupUser (UserModel) {
 
   return {
     createOrUpdate,
+    findAll,
     findById,
     findByUserName,
     findByEmail,

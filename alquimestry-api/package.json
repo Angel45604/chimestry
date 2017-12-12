@@ -6,7 +6,7 @@
   "scripts": {
     "test": "set DEBUG=alquimestry:* & ava tests/ --verbose",
     "start": "set NODE_ENV=production & node server.js",
-    "start-dev": "set DEBUG=alquimestry.* & nodemon server.js",
+    "start-dev": "set DEBUG=alquimestry:* & nodemon server.js",
     "lint": "standard"
   },
   "repository": {
@@ -24,10 +24,17 @@
     "asyncify": "^2.1.2",
     "ava": "^0.24.0",
     "body-parser": "^1.18.2",
+    "chalk": "^2.3.0",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "debug": "^3.1.0",
     "express": "^4.16.2",
+    "express-asyncify": "^1.0.0",
+    "express-session": "^1.15.6",
+    "http": "0.0.0",
+    "jsonwebtoken": "^8.1.0",
     "morgan": "^1.9.0",
+    "nodemon": "^1.12.5",
     "proxyquire": "^1.8.0",
     "sinon": "^4.1.2",
     "standard": "^10.0.3",

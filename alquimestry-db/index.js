@@ -9,18 +9,6 @@ const setupCompound = require('./lib/compound')
 const setupUser = require('./lib/user')
 
 module.exports = async function (config) {
-  config = defaults(config, {
-    dialect: 'sqlite',
-    pool: {
-      max: 10,
-      min: 0,
-      idle: 10000
-    },
-    query: {
-      raw: true
-    }
-  })
-
   const sequelize = setupDatabase(config)
   const UserModel = setupUserModel(config)
   const CompoundModel = setupCompoundModel(config)
